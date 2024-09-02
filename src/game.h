@@ -1,7 +1,7 @@
 #pragma once
-#include "blx/Defines.h"
-#include "BLX/blx_gameType.h"
-#include "BLX/Camera.h"
+#include "BLX/core/blx_defines.h"
+#include "BLX/core/blx_gameType.h"
+#include "BLX/rendering/blx_camera.h"
 
 typedef struct{
     float deltaTime;

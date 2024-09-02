@@ -1,10 +1,10 @@
 #include "game.h"
-#include "BLX/blx_logger.h"
-#include "BLX/blx_input.h"
-#include "BLX/blx_model.h"
+#include "BLX/core/blx_logger.h"
+#include "BLX/core/blx_input.h"
+#include "BLX/rendering/blx_model.h"
 #include "BLX/utils/blx_fileManagement.h"
-#include "BLX/blx_memory.h"
-
+#include "BLX/core/blx_memory.h"
+#include "BLX/blx_imGui.h"
 
 static gameState* state;
 
@@ -25,6 +25,7 @@ blxBool InitGame(blxGameInstance* gameInstance)
     //Temp for now.
     state->currentModel.mesh._meshData = NULL;
     state->mainCam.transform.position[2] = 10;
+    // blxImGuiInit();
     return BLX_TRUE;
 }
 
@@ -45,7 +46,7 @@ blxBool UpdateGame(float deltaTime)
         }
     }
 
-    if(blxInputGetKeyDown(BLX_KEY_1)){
+    if (blxInputGetKeyDown(BLX_KEY_1)) {
         blxSetShadingMode(BLX_SHADING_SOLID);
     }
     if (blxInputGetKeyDown(BLX_KEY_2)) {
@@ -58,6 +59,7 @@ blxBool UpdateGame(float deltaTime)
 
 blxBool Render()
 {
+    // blxImGuiBtn();
     // Checking if mesh has been initialized by the renderer.
     // TODO: This should probably be handled by the engine itself.
     if (state->currentModel.mesh._meshData != NULL) {

@@ -1,4 +1,4 @@
-#include "Defines.h"
+#include "core/blx_defines.h"
 
 typedef enum {
     BLX_LMB,

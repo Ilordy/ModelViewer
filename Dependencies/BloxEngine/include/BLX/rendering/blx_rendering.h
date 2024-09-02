@@ -1,8 +1,9 @@
 #pragma once
-#include "Defines.h"
-#include "Camera.h"
-#include "blx_mesh.h"
-#include "blx_model.h"
+#include "core/blx_defines.h"
+#include "rendering/blx_camera.h"
+#include "rendering/blx_mesh.h"
+#include "rendering/blx_model.h"
+#include "rendering/lighting/blx_lightingTypes.h"
 
 typedef enum {
     OPENGL
@@ -11,14 +12,20 @@ typedef enum {
 typedef struct
 {
     Camera* cam;
-    blxModel models[5];
+    blxModel models[10];
+    blxModel ui[10];
     unsigned int modelCount;
+    unsigned int uiCount;
+    blxDirectionalLight directionalLight;
+    blxPointLight pointLights[4];
 }blxRenderPacket;
 
 typedef enum {
     BLX_SHADING_SOLID,
     BLX_SHADING_WIREFRAME
 }blxShadingMode;
+
+void blxDrawUI(blxModel* model);
 
 BLXAPI void blxDrawModel(blxModel* model);
 BLXAPI void blxInitRenderer(GraphicsAPI graphicsToUse);
